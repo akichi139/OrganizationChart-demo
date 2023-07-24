@@ -6,7 +6,9 @@
                 <div class="input-group-prepend">
                     <button class="btn btn-primary" type="button">Add Employee</button>
                 </div>
-                <input type="text" class="form-control" placeholder="Search" wire:model="searchTerm" />
+                <form>
+                    <input type="text" class="form-control" placeholder="Search" wire:model="searchTerm" />
+                </form>
             </div>
 
             <table class="table table-bordered" style="margin: 10px 0 10px 0;">

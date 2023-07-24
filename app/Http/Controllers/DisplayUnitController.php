@@ -16,12 +16,10 @@ class DisplayUnitController extends Controller
         if (is_null($orgUnit)) {
             $orgUnit = OrganizationUnit::root()->first();
         }
-        $children = $orgUnit->children()->get();
-        $breadcrumbs = $orgUnit->getNavigationLinks();
 
         return view(
             'organization-units.show',
-            compact('orgUnit', 'children', 'breadcrumbs')
+            compact('orgUnit')
         );
     }
 }

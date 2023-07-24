@@ -11,12 +11,19 @@ use App\Models\JobRole;
 class SearchEmployeeOrganization extends Component
 {
     use WithPagination;
-    public $searchTerm;
+    public $searchTerm = '';
     public $orgUnit;
 
-    public function mount(OrganizationUnit $orgUnit = null)
+    protected $listeners = ['selectUnit'];
+    public function mount($orgUnit)
     {
-        $this->orgUnit = $orgUnit ?? OrganizationUnit::root()->first();
+        $this->orgUnit = $orgUnit;
+    }
+
+    public function selectUnit($unitId)
+    {
+        $this->orgUnit = OrganizationUnit::find($unitId);
+        $this->searchTerm = ''; // Reset search term when selecting a new unit
     }
 
     public function render()
