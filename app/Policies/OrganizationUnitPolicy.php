@@ -13,7 +13,7 @@ class OrganizationUnitPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class OrganizationUnitPolicy
      */
     public function view(User $user, OrganizationUnit $organizationUnit): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class OrganizationUnitPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class OrganizationUnitPolicy
      */
     public function update(User $user, OrganizationUnit $organizationUnit): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class OrganizationUnitPolicy
      */
     public function delete(User $user, OrganizationUnit $organizationUnit): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class OrganizationUnitPolicy
      */
     public function restore(User $user, OrganizationUnit $organizationUnit): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +61,6 @@ class OrganizationUnitPolicy
      */
     public function forceDelete(User $user, OrganizationUnit $organizationUnit): bool
     {
-        //
+        return true;
     }
 }

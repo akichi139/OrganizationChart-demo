@@ -63,4 +63,14 @@ class OrganizationUnitController extends Controller
     {
         //
     }
+    
+    /**
+     * Add children to the specified resource.
+     */
+    public function addChildren(OrganizationUnit $orgUnit)
+    {
+        $parentUnit = $orgUnit;
+
+        return view('organization-units.add-children', compact('parentUnit'));
+    }
 }
