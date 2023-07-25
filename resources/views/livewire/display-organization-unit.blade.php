@@ -40,7 +40,7 @@
     </div>
 </div>
 
-@include('partials.large-modal')
+@include('organization-units.partials.large-modal')
 @push('scripts')
     <script>
         const modal = document.querySelector('#largeModal');
