@@ -38,6 +38,12 @@ class JobPositionSeeder extends Seeder
         ]);
 
         JobPosition::create([
+            'name' => 'Managing Secretary',
+            'short_name' => 'MS',
+            'job_level' => '13'
+        ]);
+
+        JobPosition::create([
             'name' => 'Manager',
             'short_name' => 'M',
             'job_level' => '14'

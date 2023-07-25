@@ -20,6 +20,12 @@ class OrganizationUnitSeeder extends Seeder
         ]);
 
         $company->children()->create([
+            'name' => 'Office of President',
+            'short_name' => 'OFP',
+            'is_company' => false,
+        ]);
+
+        $company->children()->create([
             'name' => 'Human Resources Department',
             'short_name' => 'HRD',
             'is_company' => false,
