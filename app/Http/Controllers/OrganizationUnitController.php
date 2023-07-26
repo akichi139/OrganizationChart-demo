@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\OrganizationUnit;
 use App\Http\Requests\StoreOrganizationUnitRequest;
 use App\Http\Requests\UpdateOrganizationUnitRequest;
+use Illuminate\Http\Request;
 
 class OrganizationUnitController extends Controller
 {
@@ -72,5 +73,16 @@ class OrganizationUnitController extends Controller
         $parentUnit = $orgUnit;
 
         return view('organization-units.add-children', compact('parentUnit'));
+    }
+
+    public function addChildrenOrganizaion(Request $request){
+        $organization = new OrganizationUnit;
+        $organization->name = $request->name;
+        $organization->short_name = $request->short_name;
+        $organization->is_company = 0;
+        $organization->parent_id = $request->parent_id;
+        $organization->save();
+
+        return redirect()->route('unit.liveshow');
     }
 }

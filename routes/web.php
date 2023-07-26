@@ -25,8 +25,11 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::resource('organization-unit', App\Http\Controllers\OrganizationUnitController::class);
     Route::get('/organization-unit/{orgUnit}/add-child', [App\Http\Controllers\OrganizationUnitController::class, 'addChildren'])->name('organization-unit.add-child');
+    Route::post('/organization-unit/add-child-org', [App\Http\Controllers\OrganizationUnitController::class, 'addChildrenOrganizaion'])->name('organization-unit.add-child-org');
     Route::get('/unit/{orgUnit?}', App\Http\Controllers\DisplayUnitController::class)->name('unit.show');
+    Route::get('/live-unit/{orgUnit?}', App\Http\Controllers\DisplayLiveUnitController::class)->name('unit.liveshow');
 });
 

@@ -8,22 +8,23 @@ use Livewire\WithPagination;
 use App\Models\OrganizationUnit;
 use App\Models\JobRole;
 
-class SearchEmployeeOrganization extends Component
+class OrganizationEmployees extends Component
 {
     use WithPagination;
-    public $searchTerm = '';
+    public $searchTerm;
     public $orgUnit;
 
-    protected $listeners = ['selectUnit'];
-    public function mount($orgUnit)
+    public $listeners = ['orgUnitChanged' => 'navigateTo'];
+
+    public function mount(OrganizationUnit $orgUnit = null)
     {
-        $this->orgUnit = $orgUnit;
+        $this->orgUnit = $orgUnit ?? OrganizationUnit::root()->first();
     }
 
-    public function selectUnit($unitId)
+    public function navigateTo($unitId)
     {
         $this->orgUnit = OrganizationUnit::find($unitId);
-        $this->searchTerm = ''; // Reset search term when selecting a new unit
+        $this->render();
     }
 
     public function render()
@@ -36,6 +37,6 @@ class SearchEmployeeOrganization extends Component
 
         $jobRoles = JobRole::pluck('name', 'id');
 
-        return view('livewire.search-employee-organization', compact('employees', 'jobRoles'));
+        return view('livewire.organization-employees', compact('employees', 'jobRoles'));
     }
 }
