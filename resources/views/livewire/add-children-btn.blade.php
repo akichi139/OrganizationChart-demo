@@ -10,11 +10,11 @@
                     <h1 class="modal-title fs-5" id="largeModalLabel">Add Child Organization</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="card-body">
+                <div class="modal-body">
                     @include('organization-units.add-children')
                 </div>
                 <div class="modal-footer">
-
+                    
                 </div>
             </div>
         </div>

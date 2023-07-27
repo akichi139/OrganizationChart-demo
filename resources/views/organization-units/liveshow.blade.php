@@ -27,7 +27,6 @@
 <script>
     Livewire.on('orgUnitChanged', unitId => {
         alert('Unit change to the id of: ' + unitId);
-
     })
 </script>
 @endpush
