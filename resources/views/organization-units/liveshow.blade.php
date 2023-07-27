@@ -23,7 +23,6 @@
         </div>
     </div>
 </div>
-@include('organization-units.partials.large-modal')
 @push('scripts')
     <script>
         Livewire.on('orgUnitChanged', unitId => {

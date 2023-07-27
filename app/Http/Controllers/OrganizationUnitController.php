@@ -52,7 +52,7 @@ class OrganizationUnitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrganizationUnitRequest $request, OrganizationChart $organizationChart)
+    public function update(UpdateOrganizationUnitRequest $request, OrganizationUnit $organizationChart)
     {
         //
     }
@@ -62,7 +62,9 @@ class OrganizationUnitController extends Controller
      */
     public function destroy(OrganizationUnit $organizationChart)
     {
-        //
+        $organizationChart->delete();
+
+        return redirect()->route('unit.liveshow');
     }
     
     /**
@@ -83,6 +85,6 @@ class OrganizationUnitController extends Controller
         $organization->parent_id = $request->parent_id;
         $organization->save();
 
-        return redirect()->route('unit.liveshow');
+        return view('');
     }
 }

@@ -11,7 +11,10 @@ class UnitBreadcrumbs extends Component
 
     public $breadcrumbs;
 
-    public $listeners = ['orgUnitChanged' => 'navigateTo'];
+    public $listeners = [
+        'orgUnitChanged' => 'navigateTo',
+        'cudUnit' => 'navigateTo'
+    ];
     
     public function mount(OrganizationUnit $orgUnit)
     {
