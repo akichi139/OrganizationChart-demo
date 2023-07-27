@@ -9,6 +9,10 @@ class DisplayUnit extends Component
 {
     public $orgUnit, $children, $child_id, $child_name, $child_short_name, $updateMode = false;
 
+    protected $rules = [
+        'child_name' => 'required|string',
+        'child_short_name' => 'required|string',
+    ];
     public $listeners = [
         'orgUnitChanged' => 'navigateTo',
         'cudUnit' => 'navigateTo'
@@ -63,12 +67,10 @@ class DisplayUnit extends Component
 
     public function update()
     {
-        $childOrgUnit = $this->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
+        $this->validate();
   
         $childOrgUnit = OrganizationUnit::find($this->child_id);
+        
         $childOrgUnit->update([
             'name' => $this->child_name,
             'short_name' => $this->child_short_name,
@@ -78,13 +80,20 @@ class DisplayUnit extends Component
   
         $this->updateMode = false;
   
-        session()->flash('message', 'Post Updated Successfully.');
+        session()->flash('message', 'Organization Updated Successfully.');
         $this->resetInputFields();
+        $this->emit('cudUnit', $this->orgUnit->id);
     }
 
     public function delete($id)
     {
-        OrganizationUnit::find($id)->delete();
-        session()->flash('message', 'Post Deleted Successfully.');
+        $orgUnit = OrganizationUnit::find($id);
+        if($orgUnit->employees()->count() > 0){
+            session()->flash('message', 'Organization Deleted Fail.');
+            $this->emit('cudUnit', $this->orgUnit->id);
+        }
+        $orgUnit->delete();
+        session()->flash('message', 'Organization Deleted Successfully.');
+        $this->emit('cudUnit', $this->orgUnit->id);
     }
 }

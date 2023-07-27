@@ -2,7 +2,7 @@
     @auth
     @if(Auth::user()->can('update', $unit))
     <button type="button" class="btn btn-link btn-sm">
-        <a href="#" class="btn btn-link btn-sm" data-bs-toggle="modal" data-bs-target="#largeModal"
+        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{$unit->id}}"
             wire:click="edit({{ $unit->id }})">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
                 viewBox="0 0 16 16">
@@ -12,11 +12,11 @@
         </a>
     </button>
 
-    <div class="modal fade" id="largeModal" tabindex="-1" aria-labelledby="largeModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editModal{{$unit->id}}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="largeModalLabel">Edit {{ $unit->name }}</h1>
+                    <h1 class="modal-title fs-5" id="editModalLabel">Edit {{ $unit->name }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="card-body">
@@ -32,7 +32,7 @@
     @endif
     @if(Auth::user()->can('delete', $unit))
     <button type="button" class="btn btn-link btn-sm">
-        <a href="#" class="btn btn-link btn-sm" wire:click="delete({{ $unit->id }})">
+        <a href="#" class="btn btn-danger btn-sm" wire:click="delete({{ $unit->id }})">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                 viewBox="0 0 16 16">
                 <path
