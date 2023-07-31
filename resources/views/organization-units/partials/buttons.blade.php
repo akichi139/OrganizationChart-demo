@@ -12,19 +12,23 @@
         </a>
     </button>
 
-    <div class="modal fade" id="editModal{{$unit->id}}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="editModal{{$unit->id}}" tabindex="-1" aria-labelledby="editModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit {{ $unit->name }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    @include('organization-units.edit-children')
-                </div>
-                <div class="modal-footer">
-
-                </div>
+                <form wire:submit.prevent="update">
+                    <div class="modal-body">
+                        @include('organization-units.edit-children')
+                    </div>
+                    <div class="modal-footer">
+                        <button wire:click.prevent="cancel()" class="btn btn-danger">Cancel</button>
+                        <button wire:click.prevent="update()" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
