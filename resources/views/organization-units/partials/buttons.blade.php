@@ -25,8 +25,8 @@
                         @include('organization-units.edit-children')
                     </div>
                     <div class="modal-footer">
-                        <button wire:click.prevent="cancel()" class="btn btn-danger">Cancel</button>
-                        <button wire:click.prevent="update()" class="btn btn-primary">Update</button>
+                        <button wire:click.prevent="cancel()" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button wire:click.prevent="update()" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
                     </div>
                 </form>
             </div>

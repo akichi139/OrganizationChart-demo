@@ -4,7 +4,7 @@
     </button>
 
     <div wire:ignore.self class="modal fade" id="largeModal" tabindex="-1" aria-labelledby="largeModalLabel"
-        aria-hidden="true" wire:model="showModal">
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
                     </div>
                 </form>
             </div>
