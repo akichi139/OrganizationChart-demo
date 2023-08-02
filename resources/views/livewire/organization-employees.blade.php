@@ -11,11 +11,13 @@
                 <tr>
                     <td>Employee</td>
                     <td>Job Role</td>
+                    <td></td>
                 </tr>
                 @foreach($employees as $employee)
                 <tr>
                     <td>{{ $employee->first_name }} {{ $employee->last_name }} ({{ $employee->jobPosition->name }})</td>
-                    <td>{{ $jobRoles[$employee->pivot->job_role_id] }}</td>
+                    <td>{{ $employee->pivot->job_role_id }}</td>
+                    <td>@include('organization-units.partials.employees-btn')</td>
                 </tr>
                 @endforeach
             </table>

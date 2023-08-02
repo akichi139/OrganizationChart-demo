@@ -7,9 +7,10 @@ use Livewire\Component;
 
 class DisplayUnit extends Component
 {
-    public $orgUnit, $children, $child_id, $child_name, $child_short_name, $updateMode = false;
+    public $orgUnit, $children, $child_id, $child_name, $child_short_name, $updateMode = false, $change_parent;
 
     protected $rules = [
+        'change_parent' => 'required',
         'child_name' => 'required|string',
         'child_short_name' => 'required|string',
     ];
@@ -41,10 +42,12 @@ class DisplayUnit extends Component
 
     public function render()
     {
-        return view('livewire.display-unit');
+        $organizations = OrganizationUnit::all();
+        return view('livewire.display-unit', compact('organizations'));
     }
 
     private function resetInputFields(){
+        $this->change_parent = $this->orgUnit;
         $this->child_name = '';
         $this->child_short_name = '';
     }
@@ -53,8 +56,9 @@ class DisplayUnit extends Component
     {
         $childOrgUnit = OrganizationUnit::findOrFail($id);
         $this->child_id = $id;
-        $this->child_name = $childOrgUnit->title;
-        $this->child_short_name = $childOrgUnit->body;
+        $this->change_parent = $this->orgUnit;
+        $this->child_name = $childOrgUnit->name;
+        $this->child_short_name = $childOrgUnit->short_name;
   
         $this->updateMode = true;
     }
@@ -75,7 +79,7 @@ class DisplayUnit extends Component
             'name' => $this->child_name,
             'short_name' => $this->child_short_name,
             'is_company' => 0,
-            'parent_id' => $this->orgUnit->id,
+            'parent_id' => $this->change_parent,
         ]);
   
         $this->updateMode = false;

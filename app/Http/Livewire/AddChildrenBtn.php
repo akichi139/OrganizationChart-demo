@@ -9,8 +9,6 @@ class AddChildrenBtn extends Component
 {
     public $orgUnit, $short_name, $name;
 
-    public $showModal = false;
-
     protected $rules = [
         'name' => 'required|string',
         'short_name' => 'required|string',
@@ -54,13 +52,5 @@ class AddChildrenBtn extends Component
 
         $this->resetInputFields();
         $this->emit('cudUnit', $this->orgUnit->id);
-
-        $this->showModal = false;
-    }
-
-    public function closeModal()
-    {
-        // This method will be called from the frontend to close the modal
-        $this->showModal = false;
     }
 }

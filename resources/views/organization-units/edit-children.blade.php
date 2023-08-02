@@ -1,8 +1,10 @@
 <div class="mb-3">
     <label for="parent_id" class="form-label bold">Parent Unit:</label>
-    <div>
-        <span class="">{{ $orgUnit->name}} ({{ $orgUnit->short_name }}) </span>
-    </div>
+    <select wire:model="change_parent" class="form-select" id="change_parent" name="change_parent">
+        @foreach($organizations as $organization)
+        <option value="{{ $organization->id }}" @selected($organization->id == $orgUnit->id) >{{ $organization->name }}</option>
+        @endforeach
+    </select>
     <input wire:model="parent_id" type="hidden" name="parent_id" value="{{ $orgUnit->id }}" class="form-control">
 </div>
 <div class="mb-3">
