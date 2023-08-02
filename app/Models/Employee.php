@@ -21,6 +21,6 @@ class Employee extends Model
 
     public function organizationUnits()
     {
-        return $this->belongsToMany(OrganizationUnit::class, 'employee_has_organization_units', 'employee_id', 'organization_unit_id');
+        return $this->belongsToMany(OrganizationUnit::class, 'employee_has_organization_units', 'employee_id', 'organization_unit_id')->withPivot('start_date', 'job_role_id');
     }
 }

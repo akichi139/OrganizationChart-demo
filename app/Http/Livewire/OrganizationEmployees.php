@@ -53,7 +53,7 @@ class OrganizationEmployees extends Component
     }
 
     private function resetInputFields(){
-        $this->orgUnitToChange = '';
+        $this->orgUnitToChange = $this->orgUnit;
         $this->jobRolesToChange = '';
     }
 
@@ -80,10 +80,12 @@ class OrganizationEmployees extends Component
   
         $employee = Employee::findOrFail($this->employee_id);
         
-        $employee->organizationUnits()->updateExistingPivot($this->orgUnit, [
-            'employee_id' => $employee->id,
-            'organization_unit_id ' => $this->orgUnitToChange,
-            'start_date' => Carbon::now()->format('Y-m-d H:i:s'),
+        $employee->organizationUnits()->detach($this->orgUnit);
+
+        $moveDept = OrganizationUnit::where('id', $this->orgUnitToChange)->first();
+
+        $moveDept->employees()->attach($employee->id, [
+            'start_date' => Carbon::now()->addYear(-random_int(1, 5))->addDays(-random_int(1, 28)),
             'job_role_id' => $this->jobRolesToChange
         ]);
   
