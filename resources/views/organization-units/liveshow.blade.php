@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <!-- Add your sidebar content here -->
+                    @livewire('tree-view')
+                </div>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -18,9 +26,6 @@
                     <div>
                         @livewire('organization-employees', ['orgUnit' => $orgUnit])
                     </div>
-                </div>
-                <div class="card-footer">
-                    @livewire('tree-view')
                 </div>
             </div>
         </div>
