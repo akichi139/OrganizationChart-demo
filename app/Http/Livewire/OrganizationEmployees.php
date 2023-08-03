@@ -93,7 +93,7 @@ class OrganizationEmployees extends Component
   
         session()->flash('message', 'Organization Updated Successfully.');
         $this->resetInputFields();
-        $this->emit('cudUnit', $this->orgUnit->id);
+        $this->emit('cudUnit', $this->orgUnitToChange);
     }
 
     public function delete($id)

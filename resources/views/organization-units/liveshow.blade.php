@@ -19,6 +19,9 @@
                         @livewire('organization-employees', ['orgUnit' => $orgUnit])
                     </div>
                 </div>
+                <div class="card-footer">
+                    @livewire('tree-view')
+                </div>
             </div>
         </div>
     </div>
