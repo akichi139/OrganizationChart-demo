@@ -6,8 +6,12 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">
-                    <!-- Add your sidebar content here -->
                     @livewire('tree-view')
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    @livewire('organization-unit-tree')
                 </div>
             </div>
         </div>
