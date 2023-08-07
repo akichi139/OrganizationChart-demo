@@ -15,11 +15,6 @@ class OrganizationUnitTreeNode extends Component
         'cudUnit' => 'changeCurrentUnit'
     ];
 
-    public function changeCurrentUnit($unitId)
-    {
-        $this->currentUnitId = $unitId;
-    }
-
     public function render()
     {
         $children = OrganizationUnit::where('parent_id', $this->orgUnit->id)->get();
@@ -32,5 +27,10 @@ class OrganizationUnitTreeNode extends Component
     public function mount()
     {
         $this->currentUnitId = OrganizationUnit::root()->first()->id;
+    }
+
+    public function changeCurrentUnit($id)
+    {
+        $this->currentUnitId = $id;
     }
 }

@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function() {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/treeOrgUnits', [App\Http\Controllers\OrgUnitTreeController::class,'showTreeView'])->name('treeview');
+
     Route::resource('organization-unit', App\Http\Controllers\OrganizationUnitController::class);
     Route::get('/organization-unit/{orgUnit}/add-child', [App\Http\Controllers\OrganizationUnitController::class, 'addChildren'])->name('organization-unit.add-child');
     Route::post('/organization-unit/add-child-org', [App\Http\Controllers\OrganizationUnitController::class, 'addChildrenOrganizaion'])->name('organization-unit.add-child-org');

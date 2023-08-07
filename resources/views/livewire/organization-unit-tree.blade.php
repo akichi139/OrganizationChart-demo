@@ -3,7 +3,7 @@
         <ul>
             @foreach ($orgUnits as $orgUnit)
                 @if (is_null($orgUnit->parent))
-                    @livewire('organization-unit-tree-node', ['orgUnit' => $orgUnit])
+                    @livewire('organization-unit-tree-node', ['orgUnit' => $orgUnit, 'currentUnitId'=> $currentUnitId])
                 @endif
             @endforeach
         </ul>
